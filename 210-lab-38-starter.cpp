@@ -1,29 +1,36 @@
 // COMSC-210 | Lab 36 | Tianyi Cao
 #include <iostream>
-#include <iostream>
+#include <chrono>
 #include <vector>
 #include <list>
-#include "IntBinaryTree.h"
+#include <set>
+#include <fstream>
+#include <string>
+#include <algorithm>
+#include <iomanip>
+#include "IntBinaryTree.h" 
+
 using namespace std;
+using namespace std::chrono;
 
 int main() {
+    vector<string> v;
+    list<string> l;
+    set<string> s; 
+
     string line;
     long  vRead, lRead, sRead;
     long  vSort, lSort, sSort;
-
-    vector<string> v;
-    list<string> l;
-    string<string> s;
 
     // Vstcotor read 
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
     if (!fin1) { cout << "Error opening codes.txt"; return 1; }
-    while (getline(fin1)) {
-        v.pop_back(line);
+    while (getline(fin1, line)) {
+        v.push_back(line);
     }
-    vRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     fin1.close();
+    vRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // List read
     start = high_resolution_clock::now();
