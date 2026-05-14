@@ -22,6 +22,10 @@ int main() {
     long long vSort, lSort, bstSort;
     long long vIns, lIns, bstIns;
     
+    // 1. Read data from file into vector, list, and BST
+    ifstream fin1("codes.txt");
+    if (!fin1) { cout << "Error opening codes.txt"; return 1; }
+
     // Vector read 
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
@@ -32,8 +36,6 @@ int main() {
     fin1.close();
     vRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // List read
-    start = high_resolution_clock::now();
     ifstream fin2("codes.txt");
     while (getline(fin2, line)) {
         l.push_back(line);
@@ -42,8 +44,8 @@ int main() {
     lRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // BST read
-    start = high_resolution_clock::now();
     ifstream fin3("codes.txt");
+    start = high_resolution_clock::now();
     while (getline(fin3, line)) {
         bst.insertNode(line);
     }
@@ -67,13 +69,6 @@ int main() {
     start = high_resolution_clock::now();
     v.insert(v.begin() + v.size() / 2, "TESTCODE");
     vIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
-
-    // 2. List Insert
-    start = high_resolution_clock::now();
-    auto itL = l.begin();
-    advance(itL, l.size() / 2); 
-    l.insert(itL, "TESTCODE");
-    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // Set insert
     start = high_resolution_clock::now();
