@@ -45,10 +45,28 @@ int main() {
         cout << "6. Exit" << endl;
         cout << "Enter your choice: " << endl;
         cin >> choice;
+        cin.ignore();
 
+        switch (choice) {
+            case 1:
+                cout << "Enter the code to add: ";
+                bst.insertNode(entry);
+                getline(cin, entry);
+                cout << "Record added." << endl;
+                break;
 
+            case 2:
+                cout << "Enter the code to delete: ";
+                getline(cin, entry);
+                if (bst.searchNode(entry)) {
+                    bst.remove(entry);
+                    cout << "Record deleted." << endl;
+                } else {
+                    cout << "Record not found." << endl;
+                }
+                break;
         
-    } while (choice = 6);
+    } while (choice == 6);
 
     return 0;
 }
