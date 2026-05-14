@@ -36,19 +36,32 @@ int main() {
     start = high_resolution_clock::now();
     ifstream fin2("codes.txt");
     while (getline(fin2, line)) {
-        l.pop_back(line);
+        l.push_back(line);
     }
-    lRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     fin2.close();
+    lRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // Set read
     start = high_resolution_clock::now();
     ifstream fin3("codes.txt");
-    while (getline(fin3)) {
-        s.insert(line);
+    while (getline(fin3, line)) {
+        s.insert(line); 
     }
-    sRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     fin3.close();
+    sRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
+    // Vector sort
+    start = high_resolution_clock::now();
+    sort(v.begin(), v.end());
+    vSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+
+    // List sort
+    start = high_resolution_clock::now();
+    lSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    l.sort();
+
+    // Set sort
+    sSort = -1;
+    
     return 0;
 }
