@@ -78,7 +78,12 @@ int main() {
     auto itL = l.begin();
     advance(itL, l.size() / 2); 
     l.insert(itL, "TESTCODE");
-    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start + 1).count();
+
+    // 3. Set (BST) Insert
+    start = high_resolution_clock::now();
+    s.insert("TESTCODE"); 
+    sIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start + 1).count();
     
     // Output results
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
@@ -98,6 +103,6 @@ int main() {
         << setw(15) << vIns 
         << setw(15) << lIns 
         << setw(15) << sIns << endl;
-        
+
     return 0;
 }
