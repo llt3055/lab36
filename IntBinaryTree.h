@@ -7,7 +7,7 @@ class IntBinaryTree {
 private:
    // TreeNode is a private structure for IntBinaryTree nodes.
    struct TreeNode {
-      int value;         // The value in the node
+      string value;         // The value in the node
       TreeNode *left;    // Pointer to left child node
       TreeNode *right;   // Pointer to right child node
    };

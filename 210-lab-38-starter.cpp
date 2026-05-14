@@ -18,17 +18,13 @@ int main() {
     IntBinaryTree bst;
 
     string line;
-    long long vRead, lRead, sRead;
-    long long vSort, lSort, sSort;
-    long long vIns, lIns, sIns;
-
-    // Vstcotor read 
+    long long vRead, lRead, bstRead;
+    long long vSort, lSort, bstSort;
+    long long vIns, lIns, bstIns;
+    
+    // Vector read 
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
-    if (!fin1) {
-        cout << "Error: Cannot open codes.txt. Make sure it is in the same folder." << endl;
-        return 1;
-    }
     if (!fin1) { cout << "Error opening codes.txt"; return 1; }
     while (getline(fin1, line)) {
         v.push_back(line);
@@ -45,14 +41,14 @@ int main() {
     fin2.close();
     lRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // Set read
+    // BST read
     start = high_resolution_clock::now();
     ifstream fin3("codes.txt");
     while (getline(fin3, line)) {
-        s.insert(line); // BST insert
+        bst.insertNode(line);
     }
     fin3.close();
-    sRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    bstRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // Vector sort
     start = high_resolution_clock::now();
@@ -65,7 +61,7 @@ int main() {
     lSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // Set sort
-    sSort = -1;
+    bstSort = -1;
 
     // Vector insert
     start = high_resolution_clock::now();
@@ -93,17 +89,17 @@ int main() {
     cout << left << setw(15) << "Read" 
          << setw(15) << vRead 
          << setw(15) << lRead 
-         << setw(15) << sRead << endl;
+         << setw(15) << bstRead << endl;
          
     cout << left << setw(15) << "Sort" 
          << setw(15) << vSort 
          << setw(15) << lSort 
-         << setw(15) << sSort << endl;
+         << setw(15) << bstSort << endl;
 
     cout << left << setw(15) << "Insert" 
         << setw(15) << vIns 
         << setw(15) << lIns 
-        << setw(15) << sIns << endl;
+        << setw(15) << bstIns << endl;
 
     return 0;
 }
