@@ -21,7 +21,7 @@ int main() {
     long long vRead, lRead, bstRead;
     
     // 1. Read data from file into vector, list, and BST
-    ifstream fin1("codes.txt");
+    ifstream fin("codes.txt");
     if (!fin) { cout << "Error opening codes.txt"; return 1; }
 
     // Vector read 
@@ -29,7 +29,7 @@ int main() {
     while (getline(fin, line)) {
         bst.insertNode(line);
     }
-    fin1.close();
+    fin.close();
     bstRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     int choice;
@@ -50,8 +50,8 @@ int main() {
         switch (choice) {
             case 1:
                 cout << "Enter the code to add: ";
-                bst.insertNode(entry);
                 getline(cin, entry);
+                bst.insertNode(entry);
                 cout << "Record added." << endl;
                 break;
 
@@ -74,15 +74,16 @@ int main() {
                 else
                     cout << "Result: Record not found." << endl;
                 break;    
-                
+
             case 4:
                 cout << "Enter the code to modify: ";
                 getline(cin, entry);
                 if (bst.searchNode(entry)) {
                     bst.remove(entry); 
                     cout << "Enter the new code: ";
-                    getline(cin. newEntry);
-                    bst.insertNode(newEntry);              
+                    string newEntry;
+                    getline(cin, newEntry);
+                    bst.insertNode(newEntry); 
                     cout << "Record updated." << endl;
                 } else {
                     cout << "Original record not found." << endl;
@@ -91,6 +92,7 @@ int main() {
 
             case 5:
                 cout << "Current BST Contents:" << endl;
+                bst.displayInOrder();
                 break;
 
             case 6:
@@ -100,7 +102,7 @@ int main() {
             default:
                 cout << "Invalid choice. Try again." << endl;
             }
-    } while (choice == 6);
+    } while (choice != 6);
 
     return 0;
 }
