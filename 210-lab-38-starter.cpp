@@ -63,5 +63,17 @@ int main() {
     // Set sort
     sSort = -1;
     
+    cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
+    cout  << "" << setfill(' ') << endl;
+    
+    cout << left << setw(15) << "Read" 
+         << setw(15) << vRead 
+         << setw(15) << lRead 
+         << setw(15) << sRead << endl;
+         
+    cout << left << setw(15) << "Sort" 
+         << setw(15) << vSort 
+         << setw(15) << sSort 
+         << setw(15) << lSort << endl;
     return 0;
 }
