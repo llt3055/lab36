@@ -66,19 +66,15 @@ int main() {
     bstSort = -1;
 
     // Vector insert
-    start = high_resolution_clock::now();
     v.insert(v.begin() + v.size() / 2, "TESTCODE");
     vIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // Set insert
-    start = high_resolution_clock::now();
-    auto itL = l.begin();
-    advance(itL, l.size() / 2); 
-    l.insert(itL, "TESTCODE");
-    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    cout << "\n Milestone 3: Displaying BST Contents (In-Order)" << endl;
+    bst.displayInOrder(); 
+    cout << "End of BST Output\n" << endl;
     
     // Output results
-    cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
+    cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "BST (Custom)"<< endl;
     cout << setfill('-') << setw(60) << "" << setfill(' ') << endl;
 
     cout << left << setw(15) << "Read" 
@@ -90,11 +86,6 @@ int main() {
          << setw(15) << vSort 
          << setw(15) << lSort 
          << setw(15) << bstSort << endl;
-
-    cout << left << setw(15) << "Insert" 
-        << setw(15) << vIns 
-        << setw(15) << lIns 
-        << setw(15) << bstIns << endl;
 
     return 0;
 }
