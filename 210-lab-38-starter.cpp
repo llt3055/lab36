@@ -19,12 +19,16 @@ int main() {
     set<string> s; 
 
     string line;
-    long  vRead, lRead, sRead;
-    long  vSort, lSort, sSort;
-
+    long long vRead, lRead, sRead;
+    long long vSort, lSort, sSort;
+    
     // Vstcotor read 
     auto start = high_resolution_clock::now();
     ifstream fin1("codes.txt");
+    if (!fin1) {
+        cout << "Error: Cannot open codes.txt. Make sure it is in the same folder." << endl;
+        return 1;
+    }
     if (!fin1) { cout << "Error opening codes.txt"; return 1; }
     while (getline(fin1, line)) {
         v.push_back(line);
@@ -45,7 +49,7 @@ int main() {
     start = high_resolution_clock::now();
     ifstream fin3("codes.txt");
     while (getline(fin3, line)) {
-        s.insert(line); 
+        s.insert(line); // BST insert
     }
     fin3.close();
     sRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
@@ -57,15 +61,16 @@ int main() {
 
     // List sort
     start = high_resolution_clock::now();
-    lSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     l.sort();
+    lSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // Set sort
     sSort = -1;
     
+    // Output results
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
-    cout  << "" << setfill(' ') << endl;
-    
+    cout << setfill('-') << setw(60) << "" << setfill(' ') << endl;
+
     cout << left << setw(15) << "Read" 
          << setw(15) << vRead 
          << setw(15) << lRead 
@@ -73,7 +78,7 @@ int main() {
          
     cout << left << setw(15) << "Sort" 
          << setw(15) << vSort 
-         << setw(15) << sSort 
-         << setw(15) << lSort << endl;
+         << setw(15) << lSort 
+         << setw(15) << sSort << endl;
     return 0;
 }
