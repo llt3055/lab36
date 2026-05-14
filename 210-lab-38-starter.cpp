@@ -64,7 +64,7 @@ int main() {
                 } else {
                     cout << "Record not found." << endl;
                 }
-                break;
+                break;           
 
             case 3:
                 cout << "Enter the code to search for: ";
@@ -73,8 +73,8 @@ int main() {
                     cout << "Result: Record [" << entry << "] exists in the tree." << endl;
                 else
                     cout << "Result: Record not found." << endl;
-                break;
-
+                break;    
+                
             case 4:
                 cout << "Enter the code to modify: ";
                 getline(cin, entry);
