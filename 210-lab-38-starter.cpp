@@ -70,16 +70,15 @@ int main() {
 
     // Vector insert
     start = high_resolution_clock::now();
-    v.insert(v.begin() + v.size() / 2+1, "TESTCODE");
+    v.insert(v.begin() + v.size() / 2, "TESTCODE");
     vIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // 2. List Insert
     start = high_resolution_clock::now();
     auto itL = l.begin();
-    advance(itL. l.size() / 2+1); 
-    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    advance(itL, l.size() / 2); 
     l.insert(itL, "TESTCODE");
-    
+    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     
     // Output results
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
@@ -94,5 +93,11 @@ int main() {
          << setw(15) << vSort 
          << setw(15) << lSort 
          << setw(15) << sSort << endl;
+
+    cout << left << setw(15) << "Insert" 
+        << setw(15) << vIns 
+        << setw(15) << lIns 
+        << setw(15) << sIns << endl;
+        
     return 0;
 }
