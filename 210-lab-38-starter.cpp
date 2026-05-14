@@ -3,7 +3,6 @@
 #include <chrono>
 #include <vector>
 #include <list>
-#include <set>
 #include <fstream>
 #include <string>
 #include <algorithm>
@@ -16,7 +15,7 @@ using namespace std::chrono;
 int main() {
     vector<string> v;
     list<string> l;
-    set<string> s; 
+    IntBinaryTree bst;
 
     string line;
     long long vRead, lRead, sRead;
@@ -78,12 +77,12 @@ int main() {
     auto itL = l.begin();
     advance(itL, l.size() / 2); 
     l.insert(itL, "TESTCODE");
-    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start + 1).count();
+    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     // 3. Set (BST) Insert
     start = high_resolution_clock::now();
-    s.insert("TESTCODE"); 
-    sIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start + 1).count();
+    bst.insertNode("TESTCODE"); 
+    bstIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     
     // Output results
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
