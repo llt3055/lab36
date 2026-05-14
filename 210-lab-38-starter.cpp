@@ -19,8 +19,6 @@ int main() {
 
     string line;
     long long vRead, lRead, bstRead;
-    long long vSort, lSort, bstSort;
-    long long vIns, lIns, bstIns;
     
     // 1. Read data from file into vector, list, and BST
     ifstream fin1("codes.txt");
@@ -34,7 +32,7 @@ int main() {
         v.push_back(line);
     }
     fin1.close();
-    vRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    bstRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     ifstream fin2("codes.txt");
     while (getline(fin2, line)) {
@@ -52,22 +50,9 @@ int main() {
     fin3.close();
     bstRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // Vector sort
-    start = high_resolution_clock::now();
-    sort(v.begin(), v.end());
-    vSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+ 
 
-    // List sort
-    start = high_resolution_clock::now();
-    l.sort();
-    lSort = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // Set sort
-    bstSort = -1;
-
-    // Vector insert
-    v.insert(v.begin() + v.size() / 2, "TESTCODE");
-    vIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
     cout << "\n Milestone 3: Displaying BST Contents (In-Order)" << endl;
     bst.displayInOrder(); 
@@ -79,7 +64,8 @@ int main() {
 
     cout << left << setw(15) << "Read" 
          << setw(15) << vRead 
-         << setw(15) << lRead 
+         << setw(15) << lRead bstRead = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+         
          << setw(15) << bstRead << endl;
          
     cout << left << setw(15) << "Sort" 
