@@ -79,10 +79,12 @@ int main() {
     l.insert(itL, "TESTCODE");
     lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
 
-    // 3. Set (BST) Insert
+    // Set insert
     start = high_resolution_clock::now();
-    bst.insertNode("TESTCODE"); 
-    bstIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
+    auto itL = l.begin();
+    advance(itL, l.size() / 2); 
+    l.insert(itL, "TESTCODE");
+    lIns = duration_cast<nanoseconds>(high_resolution_clock::now() - start).count();
     
     // Output results
     cout << left << setw(15) << "Operation" << setw(15) << "Vector" << setw(15) << "List" << setw(15) << "Set (BST)" << endl;
