@@ -65,7 +65,41 @@ int main() {
                     cout << "Record not found." << endl;
                 }
                 break;
-        
+
+            case 3:
+                cout << "Enter the code to search for: ";
+                getline(cin, entry);
+                if (bst.searchNode(entry))
+                    cout << "Result: Record [" << entry << "] exists in the tree." << endl;
+                else
+                    cout << "Result: Record not found." << endl;
+                break;
+
+            case 4:
+                cout << "Enter the code to modify: ";
+                getline(cin, entry);
+                if (bst.searchNode(entry)) {
+                    bst.remove(entry); 
+                    cout << "Enter the new code: ";
+                    getline(cin. newEntry);
+                    bst.insertNode(newEntry);              
+                    cout << "Record updated." << endl;
+                } else {
+                    cout << "Original record not found." << endl;
+                }
+                break;
+
+            case 5:
+                cout << "Current BST Contents:" << endl;
+                break;
+
+            case 6:
+                cout << "Exiting program..." << endl;
+                break;
+
+            default:
+                cout << "Invalid choice. Try again." << endl;
+            }
     } while (choice == 6);
 
     return 0;
